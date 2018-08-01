@@ -5,63 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>摄像头拍照</title>
+    <style>
+        #box{
+            width: 100%;
+            height:auto;
+            border: 2px solid #858585;
+            margin:0 auto;
+        }
+        #imgshow{
+            width: 100%;
+            height: 100%;
+        }
+        #pox{
+            width: 70px;
+            height: 24px;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-<video id="video" width="480" height="320" autoplay>
-    <source src="/images/mov_bbb.mp4" type='video/mp4'>
-    <source src="/images/mov_bbb.ogg" type='video/ogg'>
-</video>
-<div>
-    <input accept="image/*" value="拍照1111" type="file">
-    <button id="capture">拍照</button>
-</div>
-<canvas id="canvas" width="480" height="320"></canvas>
+    <div id="box">
+        <img id="imgshow" src="" alt=""/>
+    </div>
+    <div id="pox">
+        <input id="filed" type="file" accept="image/*"/>
+    </div>
+    <script src="js/jquery.min.js"></script>
 <script>
-    //访问用户媒体设备的兼容方法
-    function getUserMedia(constraints, success, error) {
-        if (navigator.mediaDevices.getUserMedia) {
-            //最新的标准API
-            navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
-        } else if (navigator.webkitGetUserMedia) {
-            //webkit核心浏览器
-            navigator.webkitGetUserMedia(constraints,success, error)
-        } else if (navigator.mozGetUserMedia) {
-            //firfox浏览器
-            navigator.mozGetUserMedia(constraints, success, error);
-        } else if (navigator.getUserMedia) {
-            //旧版API
-            navigator.getUserMedia(constraints, success, error);
+    $('#filed').change(function(){
+        //获取input file的files文件数组;
+        //$('#filed')获取的是jQuery对象，.get(0)转为原生对象;
+        //这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+        var file = $('#filed').get(0).files[0];
+        //创建用来读取此文件的对象
+        var reader = new FileReader();
+        //使用该对象读取file文件
+        reader.readAsDataURL(file);
+        //读取文件成功后执行的方法函数
+        reader.onload=function(e){
+            //读取成功后返回的一个参数e，整个的一个进度事件
+            console.log(e);
+            //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+            //的base64编码格式的地址
+            $('#imgshow').get(0).src = e.target.result;
         }
-    }
-
-    let video = document.getElementById('video');
-    let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
-
-    function success(stream) {
-        //兼容webkit核心浏览器
-        let CompatibleURL = window.URL || window.webkitURL;
-        //将视频流设置为video元素的源
-        console.log(stream);
-
-        //video.src = CompatibleURL.createObjectURL(stream);
-        video.srcObject = stream;
-        video.play();
-    }
-
-    function error(error) {
-        console.log(`访问用户媒体设备失败${error.name}, ${error.message}`);
-    }
-
-    if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
-        //调用用户媒体设备, 访问摄像头
-        getUserMedia({video : {width: 480, height: 320}}, success, error);
-    } else {
-        alert('不支持访问用户媒体');
-    }
-
-    document.getElementById('capture').addEventListener('click', function () {
-        context.drawImage(video, 0, 0, 480, 320);
     })
 </script>
 </body>
