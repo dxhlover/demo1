@@ -7,9 +7,12 @@
     <title>摄像头拍照</title>
 </head>
 <body>
-<video id="video" width="480" height="320" controls>
+<video id="video" width="480" height="320" autoplay>
+    <source src="/images/mov_bbb.mp4" type='video/mp4'>
+    <source src="/images/mov_bbb.ogg" type='video/ogg'>
 </video>
 <div>
+    <input accept="image/*" value="拍照1111" type="file">
     <button id="capture">拍照</button>
 </div>
 <canvas id="canvas" width="480" height="320"></canvas>
