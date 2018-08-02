@@ -59,10 +59,21 @@
 <html><head>
     <title>HTML5 code Reader</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <style type="text/css">
+        html, body { height: 100%; width: 100%; text-align:center; }
+    </style>
 </head>
-<style type="text/css">
-    html, body { height: 100%; width: 100%; text-align:center; }
-</style>
+<body>
+
+<div id="support"></div>
+<div id="contentHolder">
+    <video id="video" width="320" height="320" autoplay>
+    </video>
+    <canvas style="display:none; background-color:#F00;" id="canvas" width="320" height="320">
+    </canvas> <br/>
+    <button id="snap" style="display:none; height:50px; width:120px;">开始扫描</button>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script>
     //这段代 主要是获取摄像头的视频流并显示在Video 签中
@@ -175,16 +186,6 @@
         }
     }
 </script>
-<body>
-
-<div id="support"></div>
-<div id="contentHolder">
-    <video id="video" width="320" height="320" autoplay>
-    </video>
-    <canvas style="display:none; background-color:#F00;" id="canvas" width="320" height="320">
-    </canvas> <br/>
-    <button id="snap" style="display:none; height:50px; width:120px;">开始扫描</button>
-</div>
 
 
 
