@@ -1,55 +1,191 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <!--<title>ÉãÏñÍ·ÅÄÕÕ</title>-->
+    <!--<style>-->
+        <!--#box{-->
+            <!--width: 100%;-->
+            <!--height:auto;-->
+            <!--border: 2px solid #858585;-->
+            <!--margin:0 auto;-->
+        <!--}-->
+        <!--#imgshow{-->
+            <!--width: 100%;-->
+            <!--height: 100%;-->
+        <!--}-->
+        <!--#pox{-->
+            <!--width: 70px;-->
+            <!--height: 24px;-->
+            <!--overflow: hidden;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div id="box">-->
+        <!--<img id="imgshow" src="" alt=""/>-->
+    <!--</div>-->
+    <!--<div id="pox">-->
+        <!--<input id="filed" type="file" accept="image/*"/>-->
+    <!--</div>-->
+    <!--<button type="submit" id="sub">Ìá½»</button>-->
+    <!--<script src="js/jquery.min.js"></script>-->
+<!--<script>-->
+    <!--$('#filed').change(function(){-->
+        <!--//»ñÈ¡input fileµÄfilesÎÄ¼şÊı×é;-->
+        <!--//$('#filed')»ñÈ¡µÄÊÇjQuery¶ÔÏó£¬.get(0)×ªÎªÔ­Éú¶ÔÏó;-->
+        <!--//Õâ±ßÄ¬ÈÏÖ»ÄÜÑ¡Ò»¸ö£¬µ«ÊÇ´æ·ÅĞÎÊ½ÈÔÈ»ÊÇÊı×é£¬ËùÒÔÈ¡µÚÒ»¸öÔªËØÊ¹ÓÃ[0];-->
+        <!--var file = $('#filed').get(0).files[0];-->
+        <!--//´´½¨ÓÃÀ´¶ÁÈ¡´ËÎÄ¼şµÄ¶ÔÏó-->
+        <!--var reader = new FileReader();-->
+        <!--//Ê¹ÓÃ¸Ã¶ÔÏó¶ÁÈ¡fileÎÄ¼ş-->
+        <!--reader.readAsDataURL(file);-->
+        <!--//¶ÁÈ¡ÎÄ¼ş³É¹¦ºóÖ´ĞĞµÄ·½·¨º¯Êı-->
+        <!--reader.onload=function(e){-->
+            <!--//¶ÁÈ¡³É¹¦ºó·µ»ØµÄÒ»¸ö²ÎÊıe£¬Õû¸öµÄÒ»¸ö½ø¶ÈÊÂ¼ş-->
+            <!--console.log(e);-->
+            <!--//Ñ¡ÔñËùÒªÏÔÊ¾Í¼Æ¬µÄimg£¬Òª¸³Öµ¸øimgµÄsrc¾ÍÊÇeÖĞtargetÏÂresultÀïÃæ-->
+            <!--//µÄbase64±àÂë¸ñÊ½µÄµØÖ·-->
+            <!--$('#imgshow').get(0).src = e.target.result;-->
+        <!--}-->
+    <!--})-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>æ‘„åƒå¤´æ‹ç…§</title>
-    <style>
-        #box{
-            width: 100%;
-            height:auto;
-            border: 2px solid #858585;
-            margin:0 auto;
-        }
-        #imgshow{
-            width: 100%;
-            height: 100%;
-        }
-        #pox{
-            width: 70px;
-            height: 24px;
-            overflow: hidden;
-        }
-    </style>
+<html><head>
+    <title>HTML5 code Reader</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
-<body>
-    <div id="box">
-        <img id="imgshow" src="" alt=""/>
-    </div>
-    <div id="pox">
-        <input id="filed" type="file" accept="image/*"/>
-    </div>
-    <script src="js/jquery.min.js"></script>
+<style type="text/css">
+    html, body { height: 100%; width: 100%; text-align:center; }
+</style>
+<script src="jquery-1.9.1.js"></script>
 <script>
-    $('#filed').change(function(){
-        //è·å–input fileçš„filesæ–‡ä»¶æ•°ç»„;
-        //$('#filed')è·å–çš„æ˜¯jQueryå¯¹è±¡ï¼Œ.get(0)è½¬ä¸ºåŸç”Ÿå¯¹è±¡;
-        //è¿™è¾¹é»˜è®¤åªèƒ½é€‰ä¸€ä¸ªï¼Œä½†æ˜¯å­˜æ”¾å½¢å¼ä»ç„¶æ˜¯æ•°ç»„ï¼Œæ‰€ä»¥å–ç¬¬ä¸€ä¸ªå…ƒç´ ä½¿ç”¨[0];
-        var file = $('#filed').get(0).files[0];
-        //åˆ›å»ºç”¨æ¥è¯»å–æ­¤æ–‡ä»¶çš„å¯¹è±¡
-        var reader = new FileReader();
-        //ä½¿ç”¨è¯¥å¯¹è±¡è¯»å–fileæ–‡ä»¶
-        reader.readAsDataURL(file);
-        //è¯»å–æ–‡ä»¶æˆåŠŸåæ‰§è¡Œçš„æ–¹æ³•å‡½æ•°
-        reader.onload=function(e){
-            //è¯»å–æˆåŠŸåè¿”å›çš„ä¸€ä¸ªå‚æ•°eï¼Œæ•´ä¸ªçš„ä¸€ä¸ªè¿›åº¦äº‹ä»¶
-            console.log(e);
-            //é€‰æ‹©æ‰€è¦æ˜¾ç¤ºå›¾ç‰‡çš„imgï¼Œè¦èµ‹å€¼ç»™imgçš„srcå°±æ˜¯eä¸­targetä¸‹resulté‡Œé¢
-            //çš„base64ç¼–ç æ ¼å¼çš„åœ°å€
-            $('#imgshow').get(0).src = e.target.result;
+    //Õâ¶Î´ú Ö÷ÒªÊÇ»ñÈ¡ÉãÏñÍ·µÄÊÓÆµÁ÷²¢ÏÔÊ¾ÔÚVideo Ç©ÖĞ
+    var canvas=null,context=null,video=null;
+    window.addEventListener("DOMContentLoaded", function ()
+    {
+        try{
+            canvas = document.getElementById("canvas");
+            context = canvas.getContext("2d");
+            video = document.getElementById("video");
+
+            var videoObj = { "video": true,audio:false},
+                flag=true,
+                MediaErr = function (error)
+                {
+                    flag=false;
+                    if (error.PERMISSION_DENIED)
+                    {
+                        alert('ÓÃ»§¾Ü¾øÁËä¯ÀÀÆ÷ÇëÇóÃ½ÌåµÄÈ¨ÏŞ', 'ÌáÊ¾');
+                    } else if (error.NOT_SUPPORTED_ERROR) {
+                        alert('¶Ô²»Æğ£¬ÄúµÄä¯ÀÀÆ÷²»Ö§³ÖÅÄÕÕ¹¦ÄÜ£¬ÇëÊ¹ÓÃÆäËûä¯ÀÀÆ÷', 'ÌáÊ¾');
+                    } else if (error.MANDATORY_UNSATISFIED_ERROR) {
+                        alert('Ö¸¶¨µÄÃ½ÌåÀàĞÍÎ´½ÓÊÕµ½Ã½ÌåÁ÷', 'ÌáÊ¾');
+                    } else {
+                        alert('ÏµÍ³Î´ÄÜ»ñÈ¡µ½ÉãÏñÍ·£¬ÇëÈ·±£ÉãÏñÍ·ÒÑÕıÈ·°²×°¡£»ò³¢ÊÔË¢ĞÂÒ³Ãæ£¬ÖØÊÔ', 'ÌáÊ¾');
+                    }
+                };
+            //»ñÈ¡Ã½ÌåµÄ¼æÈİ´úÂë£¬Ä¿Ç°Ö»Ö§³Ö£¨Firefox,Chrome,Opera£©
+            if (navigator.getUserMedia)
+            {
+                //qqä¯ÀÀÆ÷²»Ö§³Ö
+                if (navigator.userAgent.indexOf('MQQBrowser') > -1) {
+                    alert('¶Ô²»Æğ£¬ÄúµÄä¯ÀÀÆ÷²»Ö§³ÖÅÄÕÕ¹¦ÄÜ£¬ÇëÊ¹ÓÃÆäËûä¯ÀÀÆ÷', 'ÌáÊ¾');
+                    return false;
+                }
+                navigator.getUserMedia(videoObj, function (stream) {
+                    video.src = stream;
+                    video.play();
+                }, MediaErr);
+            }
+            else if(navigator.webkitGetUserMedia)
+            {
+                navigator.webkitGetUserMedia(videoObj, function (stream)
+                {
+                    video.src = window.webkitURL.createObjectURL(stream);
+                    video.play();
+                }, MediaErr);
+            }
+            else if (navigator.mozGetUserMedia)
+            {
+                navigator.mozGetUserMedia(videoObj, function (stream) {
+                    video.src = window.URL.createObjectURL(stream);
+                    video.play();
+                }, MediaErr);
+            }
+            else if (navigator.msGetUserMedia)
+            {
+                navigator.msGetUserMedia(videoObj, function (stream) {
+                    $(document).scrollTop($(window).height());
+                    video.src = window.URL.createObjectURL(stream);
+                    video.play();
+                }, MediaErr);
+            }else{
+                alert('¶Ô²»Æğ£¬ÄúµÄä¯ÀÀÆ÷²»Ö§³ÖÅÄÕÕ¹¦ÄÜ£¬ÇëÊ¹ÓÃÆäËûä¯ÀÀÆ÷');
+                return false;
+            }
+            if(flag){
+                alert('ÎªÁË»ñµÃ¸ü×¼È·µÄ²âÊÔ½á¹û£¬Çë¾¡Á¿½«¶şÎ¬ÂëÖÃÓÚ¿òÖĞ£¬È»ºó½øĞĞÅÄÉã¡¢É¨Ãè¡£ ÇëÈ·±£ä¯ÀÀÆ÷ÓĞÈ¨ÏŞÊ¹ÓÃÉãÏñ¹¦ÄÜ');
+            }
+            //Õâ¸öÊÇÅÄÕÕ°´Å¥µÄÊÂ¼ş£¬
+            $("#snap").click(function () {startPat();}).show();
+        }catch(e){
+            printHtml("ä¯ÀÀÆ÷²»Ö§³ÖHTML5 CANVAS");
         }
-    })
+    }, false);
+
+    //´òÓ¡ÄÚÈİµ½Ò³Ãæ
+    function printHtml(content){
+        $(window.document.body).append(content+"<br/>");
+    }
+    //¿ªÊ¼ÅÄÕÕ
+    function startPat(){
+        setTimeout(function(){//·ÀÖ¹µ÷ÓÃ¹ı¿ì
+            if(context)
+            {
+                context.drawImage(video, 0, 0, 320, 320);
+                CatchCode();
+            }
+        },200);
+    }
+    //×¥ÆÁ»ñÈ¡Í¼ÏñÁ÷£¬²¢ÉÏ´«µ½·şÎñÆ÷
+    function CatchCode() {
+        if(canvas!=null)
+        {
+            //ÒÔÏÂ¿ªÊ¼±à Êı¾İ
+            var imgData = canvas.toDataURL();
+            //½«Í¼Ïñ×ª»»Îªbase64Êı¾İ
+            var base64Data = imgData;//.substr(22); //ÔÚÇ°¶Ë½ØÈ¡22Î»Ö®ºóµÄ×Ö·û´®×÷ÎªÍ¼ÏñÊı¾İ
+            //¿ªÊ¼Òì²½ÉÏ
+            $.post("saveimg.php", { "img": base64Data },function (result)
+            {
+                printHtml("½âÎö½á¹û£º"+result.data);
+                if (result.status == "success" && result.data!="")
+                {
+                    printHtml("½âÎö½á¹û³É¹¦£¡");
+                }else{
+                    startPat();//Èç¹ûÃ»ÓĞ½âÎö³öÀ´ÔòÖØĞÂ×¥ÅÄ½âÎö
+                }
+            },"json");
+        }
+    }
 </script>
-</body>
-</html>
+<body>
+
+<div id="support"></div>
+<div id="contentHolder">
+    <video id="video" width="320" height="320" autoplay>
+    </video>
+    <canvas style="display:none; background-color:#F00;" id="canvas" width="320" height="320">
+    </canvas> <br/>
+    <button id="snap" style="display:none; height:50px; width:120px;">¿ªÊ¼É¨Ãè</button>
+</div>
+
+
+
+</body></html>
